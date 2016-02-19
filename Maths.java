@@ -21,4 +21,5 @@ public class Maths {
   public static int cube(int num){
   	return num*num*num;
   }
+
 }

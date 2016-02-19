@@ -42,8 +42,6 @@ public class MathsTest {
 	multi[4] = new int[10];
 	multi[0][0]=10;
 	multi[0][1]=12;
-  	System.out.println(multi[0][0]);
-  	System.out.println(multi[0][1]);
 
   }
 

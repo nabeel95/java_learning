@@ -7,10 +7,10 @@ public class MatrixTest{
 	@Test
 	public void matrix_constructor_should_return_matrix_with_0_at_every_index(){
 		Matrix matrix = new Matrix(2,2);
-		assertEquals(0,matrix.matrix[0][0]);
-		assertEquals(0,matrix.matrix[0][1]);
-		assertEquals(0,matrix.matrix[1][0]);
-		assertEquals(0,matrix.matrix[1][1]);
+		assertEquals(0,matrix.getValueAt(0,0));
+		assertEquals(0,matrix.getValueAt(0,1));
+		assertEquals(0,matrix.getValueAt(1,0));
+		assertEquals(0,matrix.getValueAt(1,1));
 	}
 
 	@Test
@@ -18,10 +18,10 @@ public class MatrixTest{
 		Matrix matrix = new Matrix(2,2);
 		int []values = {1,2,3,4};
 		matrix.populateMatrix(values);
-		assertEquals(1,matrix.matrix[0][0]);
-		assertEquals(2,matrix.matrix[0][1]);
-		assertEquals(3,matrix.matrix[1][0]);
-		assertEquals(4,matrix.matrix[1][1]);
+		assertEquals(1,matrix.getValueAt(0,0));
+		assertEquals(2,matrix.getValueAt(0,1));
+		assertEquals(3,matrix.getValueAt(1,0));
+		assertEquals(4,matrix.getValueAt(1,1));
 	}
 
 	@Test
@@ -33,10 +33,10 @@ public class MatrixTest{
 		matrix1.populateMatrix(values);
 		matrix2.populateMatrix(values);
 		matrix1.addMatrices(matrix2,result);
-		assertEquals(2,result.matrix[0][0]);
-		assertEquals(4,result.matrix[0][1]);
-		assertEquals(6,result.matrix[1][0]);
-		assertEquals(8,result.matrix[1][1]);
+		assertEquals(2,result.getValueAt(0,0));
+		assertEquals(4,result.getValueAt(0,1));
+		assertEquals(6,result.getValueAt(1,0));
+		assertEquals(8,result.getValueAt(1,1));
 	}
 
 	@Test 
@@ -48,10 +48,10 @@ public class MatrixTest{
 		matrix1.populateMatrix(values);
 		matrix2.populateMatrix(values);
 		matrix1.multiplyMatrices(matrix2,result);
-		assertEquals(1,result.matrix[0][0]);
-		assertEquals(2,result.matrix[0][1]);
-		assertEquals(2,result.matrix[1][0]);
-		assertEquals(4,result.matrix[1][1]);
+		assertEquals(1,result.getValueAt(0,0));
+		assertEquals(2,result.getValueAt(0,1));
+		assertEquals(2,result.getValueAt(1,0));
+		assertEquals(4,result.getValueAt(1,1));
 	}
 
 	@Test 
@@ -63,10 +63,27 @@ public class MatrixTest{
 		matrix1.populateMatrix(values);
 		matrix2.populateMatrix(values);
 		matrix1.multiplyMatrices(matrix2,result);
-		assertEquals(7,result.matrix[0][0]);
-		assertEquals(10,result.matrix[0][1]);
-		assertEquals(15,result.matrix[1][0]);
-		assertEquals(22,result.matrix[1][1]);
+		assertEquals(7,result.getValueAt(0,0));
+		assertEquals(10,result.getValueAt(0,1));
+		assertEquals(15,result.getValueAt(1,0));
+		assertEquals(22,result.getValueAt(1,1));
+		assertFalse(20==result.getValueAt(1,1));
 	}
 
+	@Test
+	public void determinent_should_return_modulus_of_a_matrix(){
+		Matrix matrix = new Matrix(2,2);
+		int []values = {2,1,3,4};
+		matrix.populateMatrix(values);
+		int res = matrix.getDeterminant();
+		assertEquals(5,res);
+	}
+	@Test
+	public void determinent_should_return_modulus_of_a_matrix_having_big_values(){
+		Matrix matrix = new Matrix(2,2);
+		int []values = {20,10,30,40};
+		matrix.populateMatrix(values);
+		int res = matrix.getDeterminant();
+		assertEquals(500,res);
+	}
 }
