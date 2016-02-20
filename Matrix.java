@@ -22,15 +22,18 @@ public class Matrix{
 		}
 	};
 
-	public void addMatrices(Matrix matrix,Matrix result){
+	public Matrix addMatrices(Matrix matrix){
+    Matrix result = new Matrix(this.rows,this.columns);
 		for(int i=0;i<this.rows;i++){
 			for (int j=0;j<this.columns;j++ ) {
 				result.matrix[i][j]=(this.getValueAt(i,j)+matrix.getValueAt(i,j));
 			}
 		}
+    return result;
 	};
 
-	public void multiplyMatrices(Matrix matrix,Matrix result){
+	public Matrix multiplyMatrices(Matrix matrix){
+    Matrix result = new Matrix(this.rows,matrix.columns);
 		for (int i=0;i<this.rows;i++) { 
             for (int j=0;j<matrix.columns;j++) { 
                 for (int k=0;k<this.columns;k++) { 
@@ -38,6 +41,7 @@ public class Matrix{
                 }
             }
         }
+        return result;
 	};
 
 	public int getDeterminant(){
